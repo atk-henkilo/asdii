@@ -1,6 +1,64 @@
-a_binary_string = "01010000 01100001 01101100 01101010 01101111 01101110 00100000 01101111 01101110 01101110 01100101 01100001 00100000 01110110 01100001 01101100 01101101 01101001 01110011 00100000 01100100 01101001 01110000 01101100 01101111 01101101 01101001 00101101 01101001 01101110 01110011 01101111 01101110 11110110 11110110 01110010 01101001 00100000 01010100 01101111 01101101 01101001 00100001 00100000 01011001 01101111 01110101 00100000 01100110 01110101 01100011 01101011 01101001 01101110 00100111 00100000 01100100 01101001 01100100 00100000 01101001 01110100 00111100 00110011"
+import webbrowser
+import time
+import sys
+import os
 
-binary_values = a_binary_string.split()
+os.system('cls')
+
+def load_txt(fname):
+    f = open(fname,"r")
+    if f.mode == 'r':
+        contents =f.read()
+
+    return contents
+
+def start_loading_screen(toolbar_width):
+    # setup toolbar
+    sys.stdout.write("[%s]" % (" " * toolbar_width))
+    sys.stdout.flush()
+    sys.stdout.write("\b" * (toolbar_width+1)) # return to start of line, after '['
+
+    for i in range(toolbar_width):
+        time.sleep(0.1) # do real work here
+        # update the bar
+        sys.stdout.write("-")
+        sys.stdout.flush()
+
+    sys.stdout.write("]\n") # this ends the progress bar
+
+CRED = '\033[91m'
+CEND = '\033[0m'
+
+
+print('Loading program')
+start_loading_screen(50)
+os.system('cls')
+print(CRED + "__________________________________________" + CEND)
+print(CRED + "WELCOME TO SECRET CODE DECRYPTING SERVICE!" + CEND)
+print(CRED + "TRUST ME, I'M ENGINEER" + CEND)
+print(CRED + "__________________________________________" + CEND)
+
+time.sleep(3)
+print(CRED + "Loading secret code" + CEND)
+
+contents=load_txt("secretcode.txt")
+start_loading_screen(25)
+os.system('cls')
+print(CRED + "Content ready for decryption" + CEND)
+print(CRED + "CODE:" + CEND)
+print(contents.replace('"',''))
+
+time.sleep(3)
+os.system('cls')
+print(CRED + "Starting decryption phase... please wait." + CEND)
+time.sleep(2)
+print(CRED + "Ready for DECRYPTING" + CEND)
+print(CRED + "This may take a while, please take a comfort position..." + CEND)
+time.sleep(3)
+print(CRED + "DECRYPTING" + CEND)
+start_loading_screen(100)
+
+binary_values = contents.replace('"','').split()
 
 ascii_string = ""
 for binary_value in binary_values:
@@ -10,5 +68,20 @@ for binary_value in binary_values:
 
     ascii_string += ascii_character
 
-
+print(CRED + "DECRYPTED MESSAGE:" + CEND)
+print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 print(ascii_string)
+print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+
+time.sleep(3)
+start_loading_screen(10)
+#lolo best part here: 
+print("Plus....")
+time.sleep(3)
+print("...I Godsmack'd your PC :D")
+time.sleep(3)
+new=2
+url='https://youtu.be/UC-0DBDkXOw'
+webbrowser.open(url, new=new)
